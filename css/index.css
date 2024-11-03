@@ -60,6 +60,13 @@ body {
     color: black;
 }
 
+.table-container {
+    overflow-y: auto; 
+    overflow-x: auto; 
+    width: 100%;
+}
+
+
 /* Logo styling */
 .sidebar-header .logo {
     display: flex;
