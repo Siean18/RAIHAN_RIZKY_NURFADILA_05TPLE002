@@ -1,4 +1,12 @@
 /* Sidebar responsif */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
 .sidebar {
     height: 100%;
     background-color: #FFF;
@@ -12,14 +20,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-/* Sidebar tampil di layar besar */
-@media (min-width: 768px) {
-    .sidebar {
-        transform: translateX(0);
-        position: relative;
-    }
 }
 
 /* Sidebar muncul saat ditampilkan */
@@ -48,27 +48,6 @@
     transition: 0.3s;
 }
 
-/* Tampilkan hamburger hanya di layar kecil */
-@media (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        z-index: 1000;
-    }
-
-    .main-content-header .hamburger {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-    }
-
-    .main-content-header .hamburger .bar {
-        width: 25px;
-        height: 3px;
-        background-color: #FFF;
-        margin: 3px 0;
-        transition: 0.3s;
-    }
-}
 /* Sidebar header with logo and menu */
 .sidebar-header {
     width: 100%;
@@ -103,13 +82,6 @@
     background-color: #FFF;
     margin: 2px 0;
     transition: 0.3s;
-}
-
-/* Show menu icon on small screens */
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
 }
 
 .sidebar .line {
@@ -197,12 +169,6 @@
 .dashboard-header p {
     color: rgba(255, 255, 255, .7);
 }
-
-.container {
-    position: absolute;
-    top: 160px;
-}
-
 .card2 {
     background-color: #f8f9fa;
     border-radius: 8px;
@@ -210,7 +176,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 300px;
     max-height: 100px;
-    margin: 10px auto;
+    margin-top: -50px;
+    /* margin: 10px auto; */
     transition: all 0.3s ease-in-out;
 }
 
@@ -248,31 +215,100 @@
     font-weight: bold;
 }
 
-/* Responsif untuk layar kecil */
-@media (max-width: 576px) {
-    .card2 {
-        max-width: 100%;
-        padding: 15px;
-    }
-
-    .card2-icon {
-        font-size: 1.5rem;
-        margin-right: 10px;
-    }
-
-    .card2-title {
-        font-size: 1rem;
-    }
-
-    .card2-text {
-        font-size: 0.9rem;
-    }
-}
-
 /* Responsif untuk layar besar */
 @media (min-width: 992px) {
     .card2 {
         max-width: 400px;
+    }
+
+    .main-content-header.active .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #FFF;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+
+    .sidebar.active {
+        transform: translateX(-100%); /* Sidebar tampil */
+        width: 0px;
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    .container{
+        width: 80% !important;
+        height: auto !important; 
+    }
+
+
+    .card2 {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 300px;
+        max-height: 100px;
+        margin: 10px auto;
+        transition: all 0.3s ease-in-out;
+    }
+    .sidebar {
+        display: none;
+        transform: translateX(-100%); /* Sidebar tersembunyi di luar layar */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #ffffff; /* Sesuaikan warna */
+        z-index: 1000;
+        transition: transform 0.3s ease;
+        width: 75%; /* Sesuaikan lebar sidebar */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Sidebar tampil */
+        width: 100%;
+        display: block;
+        visibility: visible;
+    }
+
+    .main-content-header {
+        width: 100%;
+        height: 60px;
+        background-color: #007bff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        color: black;
+        box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-content-header .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .main-content-header .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #FFF;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+
+    .main-content-header.active .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #FFF;
+        margin: 3px 0;
+        transition: 0.3s;
+    }
+
+    .card2 {
+        max-width: 80%;
     }
 }
 
